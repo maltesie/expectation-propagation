@@ -130,7 +130,7 @@ def load_data(dataset):
     return Xtrain, Ytrain
 
 
-def artificial_data(n=70, d=2000, relevant_each=25, class_split=35, add_value=2.0):
+def artificial_data(n=70, d=2000, relevant_each=25, class_split=35, add_value=0.4):
     print('artificial dataseet')
     X = np.random.rand(n,d)
     X[:class_split,:relevant_each] += add_value
@@ -163,5 +163,5 @@ def classification_error(dataset, cross_n=5):
     return scores
     
 
-scores = classification_error('artificial')
-print(scores)
+for dataset in ['adenocarcinoma', 'brain_A', 'brain_B', 'brain_C', 'breastER_standard', 'breastLN_standard', 'colon', 'down_syndrome', 'leukaemia', 'lymphoma', 'metastasis', 'mutation', 'ovarian', 'srbtc']:
+    print(100 * (1-np.mean(classification_error(dataset))))
